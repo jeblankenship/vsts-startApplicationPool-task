@@ -1,0 +1,48 @@
+{
+    "id": "F1992B7B-4F14-4242-84E3-24C9E3362F59",
+    "name": "startApplicationPool",
+    "friendlyName": "Start Application Pool On Remote Computer",
+    "description": "Task starts the Application Pool on the specified remote computer.",
+	"helpMarkDown": "[More Information](https://github.com/jeblankenship/vsts-startApplicationPool-task#readme)",
+    "category": "Utility",
+    "visibility": [
+        "Build",
+		"Release"
+    ],
+    "author": "James Blankenship",
+    "version": {
+        "Major": 0,
+        "Minor": 1,
+        "Patch": 2
+    },
+    "minimumAgentVersion": "1.92.0",
+    "inputs": [
+        {
+            "name": "server",
+            "type": "string",
+            "label": "Server",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Server to run command on."
+        },
+        {
+            "name": "appPoolName",
+            "type": "string",
+            "label": "Application Pool",
+            "defaultValue": "",
+            "required": true,
+            "helpMarkDown": "Application Pool to start."
+        }
+    ],
+    "instanceNameFormat": "Start Application Pool On Remote Computer",
+    "execution": {
+        "PowerShell": {
+            "target": "$(currentDirectory)\\start-applicationPool.ps1",
+            "argumentFormat": "",
+            "workingDirectory": "$(System.DefaultWorkingDirectory)"
+		}
+    },
+    "messages": {
+        "failed": "Application Pool failed to start."
+    }
+}
